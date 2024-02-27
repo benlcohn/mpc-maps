@@ -11,3 +11,39 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.drumkit {
+  display: grid;
+  grid-template-columns: repeat(4, 5rem);
+  grid-template-rows: repeat(4, 5rem);
+	align-items: center;
+	justify-content: center;
+}
+
+.pad {
+	background-color: purple;
+	border-radius: .5rem;
+	width: 4.5rem;
+	height: 4.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.pad:hover {
+	opacity: 0.7;
+}
+
+.pad:active,
+.pad.playing {
+	transform: scale(.95);
+}
+
+.pad .key {
+	color: #fff;
+	font-size: 3rem;
+}

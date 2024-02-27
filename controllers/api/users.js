@@ -8,6 +8,7 @@ module.exports = {
 };
 
 async function create(req, res) {
+  console.log('SUCCESS')
   try {
     // Add the user to the db
     const user = await User.create(req.body);
@@ -16,6 +17,7 @@ async function create(req, res) {
     // Yes, we can serialize a string
     res.json(token);
   } catch (err) {
+    console.log(err)
     // Probably a dup email
     res.status(400).json(err);
   }
