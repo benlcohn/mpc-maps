@@ -13,12 +13,6 @@ export default function UploadSoundPage() {
   // inputRef.current will be the <input> DOM element
   const fileInputRef = useRef();
 
-  // Fetch existing uploaded sounds after first render
-  // Sounds will be sorted in the controller with the most recent first
-  useEffect(function() {
-    soundsAPI.getAll().then(sounds => setSounds(sounds));
-  }, []);
-
   // EVENT HANDLERS
 
   async function handleUpload() {
@@ -44,13 +38,16 @@ export default function UploadSoundPage() {
         <input value={title} onChange={(evt) => setTitle(evt.target.value)} placeholder="Sound Title" />
         <select value={category} onChange={(evt) => setCategory(evt.target.value)}> 
           <option value='Boom'>Boom</option>
-          <option value=''></option>
-          <option value=''></option>
-          <option value=''></option>
-          <option value=''></option>
-          <option value=''></option>
-          <option value=''></option>
-          <option value=''></option>
+          <option value='Clap'>Clap</option>
+          <option value='HiHat-Open'>HiHat-Open</option>
+          <option value='HiHat-Closed'>HiHat-Closed</option>
+          <option value='Kick'>Kick</option>
+          <option value='Ride'>Ride</option>
+          <option value='Snare'>Snare</option>
+          <option value='Tink'>Tink</option>
+          <option value='Tom-High'>Tom-High</option>
+          <option value='Tom-Low'>Tom-Low</option>
+          <option value='Tom-Mid'>Tom-Mid</option>
         </select>
         <button onClick={handleUpload}>Upload Sound</button>
       </section>

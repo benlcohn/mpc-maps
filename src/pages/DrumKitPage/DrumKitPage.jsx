@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react'
 import './DrumKitPage.css'
-import DrumKit from '../../components/DrumKit/DrumKit';
+import DrumKit from '../../components/DrumKit/DrumKit'
 import * as soundsAPI from '../../utilities/sounds-api';
 
-const PAD_LETTERS = ['1', '2', '3', '4', 'Q', 'W', 'E', 'R', 'A', 'S', 'D', 'F', 'Z', 'X', 'C', 'V']
+const PAD_LETTERS = [
+	'1', '2', '3', '4', 
+	'Q', 'W', 'E', 'R', 
+	'A', 'S', 'D', 'F', 
+	'Z', 'X', 'C', 'V'];
 
 export default function DrumKitPage() {
 	const [sounds, setSounds] = useState([]);
@@ -15,21 +19,35 @@ export default function DrumKitPage() {
     	soundsAPI.getAll().then(sounds => setSounds(sounds));
   	}, []);
 
-	function play(evt) {
-		setPlaying(true);
+	useEffect(function() {
+    	window.addEventListener('keydown', handleKeyDown);
+		return function() {
+			window.removeEventListener('keydown', handleKeyDown);
+		}
+  	}, []);
 
-		new Audio(sound).play();
+	function play(sound) {
+		setPlaying(true);
+		new Audio(sound.url).play();
 
 		setTimeout(() => {
 			setPlaying(false);
 		}, 150);
-	};
+	}
+
+	function handleKeyDown(evt) {
+		evt.preventDefault();
+		const soundIdx = PAD_LETTERS.indexOf(evt.key.toUpperCase());
+		console.log(sounds[soundIdx], sounds)
+		// play(sounds[soundIdx]);
+	}
 
 	return (
-		<div className="DrumKitPage" onKeyDown={play}>
+		<div className="DrumKitPage">
 			<h1>Drumkit</h1>
 			<div className="drumkit">
 				{sounds.map((sound, i) => (
+					
 					<DrumKit key={sound._id} sound={sound} letter={PAD_LETTERS[i]} play={play} playing={playing}/>
 				))}
 			</div>
