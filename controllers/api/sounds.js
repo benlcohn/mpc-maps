@@ -2,8 +2,14 @@ const uploadFile = require('../../config/uploadFile');
 const Sound = require('../../models/sound');
 
 module.exports = {
-    upload
+    upload,
+    index
 };
+
+async function index(req, res) {
+    const sounds = await Sound.find({}).sort('-title');
+    res.json(sounds);
+}
 
 async function upload(req, res) {
     try {
@@ -13,7 +19,9 @@ async function upload(req, res) {
             const soundDoc = await Sound.create({
                 url: soundURL,
                 // Inputs sent with the file are avail on req.body
-                title: req.body.title
+                title: req.body.title,
+                category: req.body.category,
+                user: req.user._id
             });
             res.json(soundDoc);
         } else {

@@ -6,6 +6,7 @@ import * as soundsAPI from '../../utilities/sounds-api';
 export default function UploadSoundPage() {
 // Create state to store file  
   const [title, setTitle] = useState('');
+  const [category, setCategory] = useState('Boom');
   const [sounds, setSounds] = useState([]);
   // Use a ref prop on the <input> in the JSX to
   // create a reference to the <input>, i.e.,
@@ -25,6 +26,8 @@ export default function UploadSoundPage() {
     // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#uploading_a_file
     const formData = new FormData();
     formData.append('title', title);
+    formData.append('category', category);
+    formData.append('sound', fileInputRef.current.files[0]);
     // DO I NEED MORE APPENDS?
     const newSound = await soundsAPI.upload(formData);
     setSounds([newSound, ...sounds]);
@@ -39,6 +42,16 @@ export default function UploadSoundPage() {
       <section className="flex-ctr-ctr">
         <input type="file" ref={fileInputRef} />
         <input value={title} onChange={(evt) => setTitle(evt.target.value)} placeholder="Sound Title" />
+        <select value={category} onChange={(evt) => setCategory(evt.target.value)}> 
+          <option value='Boom'>Boom</option>
+          <option value=''></option>
+          <option value=''></option>
+          <option value=''></option>
+          <option value=''></option>
+          <option value=''></option>
+          <option value=''></option>
+          <option value=''></option>
+        </select>
         <button onClick={handleUpload}>Upload Sound</button>
       </section>
       <section>
