@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
-import './DrumKitPage.css'
-import DrumKit from '../../components/DrumKit/DrumKit'
+import { useState, useEffect } from 'react';
+import './DrumKitPage.css';
+import DrumKit from '../../components/DrumKit/DrumKit';
 import * as soundsAPI from '../../utilities/sounds-api';
 
 const PAD_LETTERS = [
@@ -24,9 +24,10 @@ export default function DrumKitPage() {
 		return function() {
 			window.removeEventListener('keydown', handleKeyDown);
 		}
-  	}, []);
+  	}, [handleKeyDown]);
 
 	function play(sound) {
+		if (!sound) return;
 		setPlaying(true);
 		new Audio(sound.url).play();
 
@@ -36,10 +37,8 @@ export default function DrumKitPage() {
 	}
 
 	function handleKeyDown(evt) {
-		evt.preventDefault();
 		const soundIdx = PAD_LETTERS.indexOf(evt.key.toUpperCase());
-		console.log(sounds[soundIdx], sounds)
-		// play(sounds[soundIdx]);
+		play(sounds[soundIdx]);
 	}
 
 	return (
