@@ -9,9 +9,8 @@ const PAD_LETTERS = [
 	'A', 'S', 'D', 'F', 
 	'Z', 'X', 'C', 'V'];
 
-export default function LayoutPage() {
-    const [layouts, setLayouts] = useState([]);
-    const [sounds, setSounds] = useState([]);
+export default function LayoutPage({layouts, setLayouts, sounds}) {
+
     const [newLayout, setNewLayout] = useState({
         title: "",
         pad1: null,
@@ -31,12 +30,6 @@ export default function LayoutPage() {
         padC: null,
         padV: null,
     });
-
-
-    useEffect(function() {
-        layoutsAPI.getAll().then(layouts => setLayouts(layouts));
-        soundsAPI.getAll().then(sounds => setSounds(sounds));
-    }, []);
 
     async function handleSubmit(evt) {
         evt.preventDefault();

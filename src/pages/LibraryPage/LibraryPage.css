@@ -1,19 +1,16 @@
 .LibraryPage {
     height: 100%;
     display: grid;
-    grid-template-columns: 1fr 2fr; /* Divide the space into two parts, left column is 1/3 and right column is 2/3 */
+    grid-template-columns: 1.6fr 3.5fr 3fr;
     grid-template-rows: 1fr;
     background-color: var(--white);
     border-radius: 2vmin;
   }
   
   .LibraryPage aside {
-    height: 100%; /* Ensure the aside takes the full height of the container */
-    overflow-y: auto; /* Enable vertical scrolling if content overflows */
-    background-color: var(--light-gray); /* Optional: Add background color to the left column */
-  }
-  
-  .LibraryPage main {
-    height: 100%; /* Ensure the main section takes the full height of the container */
-    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3vmin 2vmin;
   }
