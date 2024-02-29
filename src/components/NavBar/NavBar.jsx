@@ -11,8 +11,6 @@ export default function NavBar({ user, setUser }) {
     <nav>
       <Link to="/drumkit">DRUMKIT</Link>
       &nbsp; | &nbsp;
-      <Link to="/maps">MAPS</Link>
-      &nbsp; | &nbsp;
       <Link to="/library">SOUND LIBRARY</Link>
       &nbsp;&nbsp;
       <Link to="/upload">UPLOAD AUDIO</Link>

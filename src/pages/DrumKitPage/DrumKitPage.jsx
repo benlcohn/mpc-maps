@@ -46,8 +46,13 @@ export default function DrumKitPage() {
 			<h1>Drumkit</h1>
 			<div className="drumkit">
 				{sounds.map((sound, i) => (
-					
-					<DrumKit key={sound._id} sound={sound} letter={PAD_LETTERS[i]} play={play} playing={playing}/>
+					<DrumKit 
+						key={sound._id || sound.blank}
+						sound={sound}
+						letter={PAD_LETTERS[i]} 
+						play={play} 
+						playing={playing}
+					/>
 				))}
 			</div>
 		</div>

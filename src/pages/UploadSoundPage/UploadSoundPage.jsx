@@ -23,11 +23,16 @@ export default function UploadSoundPage() {
     formData.append('category', category);
     formData.append('sound', fileInputRef.current.files[0]);
     // DO I NEED MORE APPENDS?
-    const newSound = await soundsAPI.upload(formData);
-    setSounds([newSound, ...sounds]);
-    //Clear file inputs
-    setTitle('');
-    fileInputRef.current.value = '';
+    try {
+      const newSound = await soundsAPI.upload(formData);
+      setSounds([newSound, ...sounds]);
+      setTitle('');
+      fileInputRef.current.value = '';
+      alert('File uploaded successfully!');
+    } catch (error) {
+      console.error('Upload failed:', error);
+      alert('File upload failed. Please try again.');
+    }
 
   }
 
