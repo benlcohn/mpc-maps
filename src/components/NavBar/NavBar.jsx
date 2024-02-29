@@ -13,6 +13,8 @@ export default function NavBar({ user, setUser }) {
       &nbsp; | &nbsp;
       <Link to="/library">SOUND LIBRARY</Link>
       &nbsp;&nbsp;
+      <Link to="/layouts">LAYOUTS</Link>
+      &nbsp;&nbsp;
       <Link to="/upload">UPLOAD AUDIO</Link>
       &nbsp;&nbsp;
       <span>Welcome, {user.name}</span>

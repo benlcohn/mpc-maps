@@ -9,7 +9,7 @@ module.exports = {
 };
 
 async function index(req, res) {
-    const sounds = await Sound.find({}).sort('title').populate('category').exec();
+    const sounds = await Sound.find({}).sort('title').populate('category');
     console.log(sounds)
     // re-sort based upon the sortOrder of the populated categories
     const sortedSounds = sounds.sort((a, b) => a.category.sortOrder - b.category.sortOrder);
