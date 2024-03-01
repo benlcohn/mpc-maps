@@ -46,9 +46,15 @@ export default function LayoutPage({layouts, setLayouts, sounds}) {
     }
 
     const options = sounds.map(sound => <option key={sound._id} value={sound._id}>{`${sound.category.name} - ${sound.title}`}</option>);
-    options.unshift(<option key='x'>---select sound---</option>)
-    const selects = PAD_LETTERS.map(letter => <select key={letter} value={newLayout[`pad${letter}`]} onChange={handleChange} name={`pad${letter}`}>{options}</select>);
-    const pads = PAD_LETTERS.map((letter, idx) => <div key={letter} className={newLayout[`pad${letter}`] ? '' : 'no-sound'}>{selects[idx]}</div>);
+    options.unshift(<option key='x'>-pick sound-</option>)
+    const selects = PAD_LETTERS.map((letter, idx) => (
+        <div key={letter}>
+            <span className="pad-letter">{letter}</span> {/* Display PAD_LETTER */}
+            <select value={newLayout[`pad${letter}`]} onChange={handleChange} name={`pad${letter}`}>
+                {options}
+            </select>
+        </div>
+    ));    const pads = PAD_LETTERS.map((letter, idx) => <div key={letter} className={newLayout[`pad${letter}`] ? '' : 'no-sound'}>{selects[idx]}</div>);
 
     return (
         <main className="LayoutsPage">
@@ -64,7 +70,7 @@ export default function LayoutPage({layouts, setLayouts, sounds}) {
                     {pads}
                 </section>
                 <br />
-                <input name="title" placeholder="Name your layout!" onChange={handleChange} required />
+                <input className="dropdown" name="title" placeholder="Name your layout!" onChange={handleChange} required />
                 <button type="submit">SAVE LAYOUT</button>
             </form>
         </main>

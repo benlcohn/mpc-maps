@@ -1,5 +1,8 @@
+import './LibraryPage.css';
+import Logo from '../../components/Logo/Logo';
 import { useState, useEffect, useRef } from 'react'
 import * as soundsAPI from '../../utilities/sounds-api'
+import * as categoriesAPI from '../../utilities/categories-api'
 import LibraryList from '../../components/LibraryList/LibraryList';
 import CategoryList from '../../components/CategoryList/CategoryList';
 
@@ -20,19 +23,19 @@ export default function LibraryPage({ user, setUser }) {
         getSounds();
     }, []);
     
-return (
-    <main className="LibraryPage">
-        <aside>
-        <CategoryList
-            categories={categoriesRef.current}
-            activeCat={activeCat}
-            setActiveCat={setActiveCat}
-        />
-        </aside>
-        <LibraryList
-        librarySounds={librarySounds.filter(sound => sound.category.name === activeCat)}
-        />
-        <div className="Placeholder" />
-    </main>
+    return (
+        <main className="LibraryPage">
+            <aside>
+                <CategoryList
+                    categories={categoriesRef.current}
+                    activeCat={activeCat}
+                    setActiveCat={setActiveCat}
+                />
+            </aside>
+            <LibraryList
+            librarySounds={librarySounds.filter(sound => sound.category.name === activeCat)}
+            />
+            <div className="Placeholder" />
+        </main>
     );
 }

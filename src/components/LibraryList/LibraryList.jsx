@@ -7,7 +7,6 @@ export default function LibraryList({ librarySounds }) {
       key={sound._id}
       librarySound={sound}
       url={sound.url}
-    //   handleAddToKit={handleAddToKit}
     />
   );
   return (

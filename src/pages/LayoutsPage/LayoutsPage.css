@@ -12,7 +12,7 @@
 }
 
 .LayoutsPage form section div {
-    background-color: purple;
+    background-color: var(--purple);
     color: darkgrey;
 	border-radius: .5rem;
 	width: 8rem;
@@ -23,5 +23,24 @@
 }
 
 .LayoutsPage form section div.no-sound {
-    background-color: blue;
+    background-color: var(--clrpurple);
+}
+
+.LayoutsPage form section div select {
+    background-color: var(--clrpurple);
+    width: 6rem;
+    
+}
+
+.pad-letter {
+    display: block; /* Ensure it takes up the whole line */
+    margin-bottom: 90px; /* Shift it upwards */
+    background-color: var(--gray); /* Set background color */
+    border-radius: 50%; /* Make it round */
+    width: 20px; /* Set width */
+    height: 20px; /* Set height */
+    text-align: center; /* Center text */
+    line-height: 20px; /* Center vertically */
+    font-size: 14px; /* Adjust font size */
+    color: white; /* Set text color */
 }

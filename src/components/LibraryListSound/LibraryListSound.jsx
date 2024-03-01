@@ -17,9 +17,7 @@ export default function LibraryListSound({ librarySound }) {
         <div className="LibraryListSound">
             <div className="title">{librarySound.title}</div>
             <div className="play">
-                <button className="btn" onClick={ () => play() } >
-                ▶️
-                </button>
+                <span onClick={play}>▶️</span>
             </div>
         </div>
     );
