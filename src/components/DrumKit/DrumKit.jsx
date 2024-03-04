@@ -21,10 +21,14 @@ export default function DrumKit({ sound, letter, noSound, sounds, padLetters, ma
             setPlaying(false);
         }, 150);
     };
-
+	
     function handleKeyDown(evt) {
         const soundIdx = padLetters.indexOf(evt.key.toUpperCase());
-        play(sounds[soundIdx]);
+        if (soundIdx !== -1) {
+            play(sounds[soundIdx]);
+        } else {
+            console.log("Key not mapped to any sound.");
+        }
     };
 
     useEffect(() => {

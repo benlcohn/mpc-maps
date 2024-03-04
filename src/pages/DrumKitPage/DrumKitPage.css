@@ -15,21 +15,3 @@
     width: 80vw; 
     margin: 0 auto; 
 }
-
-.layout-dropdown select {
-    margin-right: 10px;
-    width: auto; 
-    min-width: 100px;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 20%;
-  height: 20%;
-  background-image: url('../../../public/logo512.png'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
-  background-size: cover; /* Cover the entire area */
-  background-position: center; /* Center the image */
-  z-index: 999; /* Ensure it overlays other content */
-}

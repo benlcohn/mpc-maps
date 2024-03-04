@@ -12,13 +12,12 @@ export default function NavBar({ user, setUser }) {
       <Link to="/drumkit">DRUMKIT</Link>
       &nbsp; | &nbsp;
       <Link to="/library">SOUND LIBRARY</Link>
-      &nbsp;&nbsp;
+      &nbsp; | &nbsp;
       <Link to="/layouts">LAYOUTS</Link>
-      &nbsp;&nbsp;
+      &nbsp; | &nbsp;
       <Link to="/upload">UPLOAD AUDIO</Link>
-      &nbsp;&nbsp;
-      <span>Welcome, {user.name}</span>
-      &nbsp;&nbsp;<Link to="" onClick={handleLogOut}>Log Out</Link>
+      &nbsp; | &nbsp;
+      <Link to="" onClick={handleLogOut}>Log Out</Link>
     </nav>
   );
 }

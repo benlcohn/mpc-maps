@@ -8,11 +8,11 @@ export default function AuthPage({ setUser }) {
 
   return (
     <main className="AuthPage">
-      <div>
-      <img src="/logo512.png" alt="logo512" style={{width: '15%'}} />
-      </div>
-      {showLogin ? <LoginForm setUser={setUser} /> : <SignUpForm setUser={setUser} />}
-      <p className="sign-log" onClick={() => setShowLogin(!showLogin)}>{showLogin ? 'SIGN UP' : 'LOG IN'}</p>
+      <img src="/logo512.png" alt="logo512" style={{width: '40%'}} />
+        <div className="auth-container">
+          {showLogin ? <LoginForm setUser={setUser} /> : <SignUpForm setUser={setUser} />}
+        </div>
+      <span className="sign-log" onClick={() => setShowLogin(!showLogin)}>{showLogin ? 'SIGN UP' : 'LOG IN'}</span>
     </main>
   );
 }

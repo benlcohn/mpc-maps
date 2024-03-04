@@ -18,7 +18,7 @@ const PAD_LETTERS = [
 export default function DrumKitPage() {
     const [sounds, setSounds] = useState([]);
     const [layouts, setLayouts] = useState([]);
-    const [selectedLayout, setSelectedLayout] = useState(null);
+    const [selectedLayout, setSelectedLayout] = useState('65e54e003d8518c2b9d4753e');
     const [masterVolume, setMasterVolume] = useState(0.5);
     const [pitch, setPitch] = useState(1);
 
@@ -50,22 +50,6 @@ export default function DrumKitPage() {
         setPitch(pitch);
     };
 
-	// Define a default layout object with all pads set to non-null sound
-    const defaultLayout = {
-        _id: 'default', // Add an identifier for the default layout
-        title: 'Default Layout', // Title for default layout
-        ...PAD_LETTERS.reduce((acc, letter) => {
-            acc[`pad${letter}`] = null; // Set all pads to null (no sound)
-            return acc;
-        }, {})
-    };
-
-	// Set the default layout as the initial selected layout
-	useEffect(() => {
-		if (layouts.length > 0) {
-			setSelectedLayout(defaultLayout);
-		}
-	}, [layouts]);
 
     return (
         <div className="DrumKitPage">
