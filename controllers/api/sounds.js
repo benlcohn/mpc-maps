@@ -23,35 +23,24 @@ async function show(req, res) {
 }
 
 async function upload(req, res) {
+    const category = await Category.findOne({ name: req.body.category });
+    console.log(category)
     try {
-      const category = await Category.findOne({ name: req.body.category });
-  
-      if (!req.files || req.files.length === 0) {
-        throw new Error('No files uploaded');
-      }
-  
-      const soundDocs = [];
-  
-      // Loop through each uploaded file
-      for (let i = 0; i < req.files.length; i++) {
-        const file = req.files[i];
-  
-        // The uploadFile function will return the uploaded file's S3 endpoint
-        const soundURL = await uploadFile(file);
-        
-        // Create a new Sound document for each file
-        const soundDoc = await Sound.create({
-          url: soundURL,
-          title: req.body.title,
-          category: category,
-          user: req.user._id
-        });
-  
-        soundDocs.push(soundDoc);
-      }
-  
-      res.json(soundDocs);
+        if (req.file) {
+            // The uploadFile fuction will return the uploaded file's S3 endpoint
+            const soundURL = await uploadFile(req.file);
+            const soundDoc = await Sound.create({
+                url: soundURL,
+                // Inputs sent with the file are avail on req.body
+                title: req.body.title,
+                category: category,
+                user: req.user._id
+            });
+            res.json(soundDoc);
+        } else {
+            throw new Error('Must select a file');
+        }
     } catch (err) {
-      res.status(400).json({ error: err.message });
+        res.status(400).json(err.message);
     }
-  }
+}

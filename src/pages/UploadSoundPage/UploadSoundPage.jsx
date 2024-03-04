@@ -4,91 +4,86 @@ import * as soundsAPI from '../../utilities/sounds-api';
 
 export default function UploadSoundPage() {
   const [fileInfo, setFileInfo] = useState([]);
+  const [uploadMessage, setUploadMessage] = useState("");
 
-  // Use a ref prop on the <input> in the JSX to
-  // create a reference to the <input>, i.e.,
-  // inputRef.current will be the <input> DOM element
   const fileInputRef = useRef();
-
-  // EVENT HANDLERS
 
   const handleUpload = async () => {
     try {
-      const formDataArray = [];
+      const formDataArray = []; 
+
+      if (fileInputRef.current.files.length === 0) {
+        setUploadMessage('No files selected');
+        return;
+      }
   
-      // Loop through each file selected by the user
       for (let i = 0; i < fileInputRef.current.files.length; i++) {
         const file = fileInputRef.current.files[i];
         const { title, category } = fileInfo[i];
   
-        // Create a new FormData object for each file
         const formData = new FormData();
         formData.append('title', title);
         formData.append('category', category);
         formData.append('sound', file);
   
-        // Add the FormData object to the array
         formDataArray.push(formData);
       }
   
-      // Upload all files simultaneously
       const promises = formDataArray.map(formData =>
         soundsAPI.upload(formData)
       );
       await Promise.all(promises);
   
-      setFileInfo([]); // Clear fileInfo state after successful upload
-      fileInputRef.current.value = ''; // Clear file input
-      alert('Files uploaded successfully!');
+      setFileInfo([]); 
+      fileInputRef.current.value = ''; 
+
+      setUploadMessage('Files uploaded successfully!'); 
     } catch (error) {
       console.error('Upload failed:', error);
-      alert('File upload failed. Please try again.');
+      setUploadMessage('File upload failed. Please try again.'); // Set error message
     }
   }  
 
-  // Function to handle change in title input for a specific file
   const handleTitleChange = (index, value) => {
     const updatedFileInfo = [...fileInfo];
     updatedFileInfo[index] = { ...updatedFileInfo[index], title: value };
     setFileInfo(updatedFileInfo);
   }
 
-  // Function to handle change in category select for a specific file
   const handleCategoryChange = (index, value) => {
     const updatedFileInfo = [...fileInfo];
     updatedFileInfo[index] = { ...updatedFileInfo[index], category: value };
     setFileInfo(updatedFileInfo);
   }
 
-// Function to add file info for a new file
-const handleFileChange = (event) => {
-  const files = event.target.files;
-  if (files.length === 0) {
-    return;
-  }
-  const newFilesInfo = Array.from(files).map((file) => {
-    const fileName = file.name.slice(0, -4); // Remove file extension
-    let defaultCategory = 'Boom';
-    const keywords = ['Clap', 'HiHat', 'Kick', 'Ride', 'Snare', 'Tink', 'Tom'];
-    keywords.forEach(keyword => {
-      if (fileName.toLowerCase().includes(keyword.toLowerCase())) {
-        defaultCategory = keyword;
-      }
+  const handleFileChange = (event) => {
+    const files = event.target.files;
+    if (files.length === 0) {
+      return;
+    }
+    const newFilesInfo = Array.from(files).map((file) => {
+      const fileName = file.name.slice(0, -4); 
+      let defaultCategory = 'Boom';
+      const keywords = ['Clap', 'HiHat', 'Kick', 'Ride', 'Snare', 'Tink', 'Tom'];
+      keywords.forEach(keyword => {
+        if (fileName.toLowerCase().includes(keyword.toLowerCase())) {
+          defaultCategory = keyword;
+        }
+      });
+      return {
+        title: '',
+        category: defaultCategory,
+        file,
+      };
     });
-    return {
-      title: '',
-      category: defaultCategory,
-      file,
-    };
-  });
-  setFileInfo([...fileInfo, ...newFilesInfo]);
-};
+    setFileInfo([...fileInfo, ...newFilesInfo]);
+  };
 
   return (
     <main className="UploadSoundPage">
       <section className="uploadContainer">
         <input type="file" ref={fileInputRef} multiple onChange={handleFileChange} />
-        <button className="uploadButton" onClick={handleUpload}>Upload Sound</button>
+        <button className="uploadButton" onClick={handleUpload}>{uploadMessage ? uploadMessage : 'SAVE AUDIO'}</button>
       </section>
       <section className="fileContainer">
         {fileInfo.map((file, index) => (
