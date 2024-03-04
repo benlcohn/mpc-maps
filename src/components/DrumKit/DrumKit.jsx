@@ -1,35 +1,41 @@
 import './DrumKit.css';
 import { useState, useEffect } from 'react';
 
-export default function DrumKit({ sound, letter, play, noSound, sounds, padLetters }) {
-	const [playing, setPlaying] = useState(false);
+export default function DrumKit({ sound, letter, noSound, sounds, padLetters, masterVolume, pitch }) {
+    const [playing, setPlaying] = useState(false);
 
-	const padStyle = {
+    const padStyle = {
         backgroundColor: noSound ? "pink" : "purple",
     };
 
-	// Function to play sound
-	function play(sound) {
-		if (!sound) return;
-		setPlaying(true);
-		new Audio(sound.url).play();
+    // Function to play sound
+    function play(sound) {
+        if (!sound) return;
+        setPlaying(true);
+        const audio = new Audio(sound.url);
+        audio.volume = masterVolume;
+        audio.playbackRate = pitch;
+        audio.play();
 
-		setTimeout(() => {
-			setPlaying(false);
-		}, 150);
-	};
+        setTimeout(() => {
+            setPlaying(false);
+        }, 150);
+    };
 
-	function handleKeyDown(evt) {
-		const soundIdx = padLetters.indexOf(evt.key.toUpperCase());
-		play(sounds[soundIdx]);
-	};
+    function handleKeyDown(evt) {
+        const soundIdx = padLetters.indexOf(evt.key.toUpperCase());
+        play(sounds[soundIdx]);
+    };
 
-	useEffect(function() {
-    	window.addEventListener('keydown', handleKeyDown);
-		return function() {
-			window.removeEventListener('keydown', handleKeyDown);
-		}
-  	}, [handleKeyDown]);
+    useEffect(() => {
+        const handleKeyDownEvent = (event) => handleKeyDown(event);
+
+        window.addEventListener('keydown', handleKeyDownEvent);
+        
+        return () => {
+            window.removeEventListener('keydown', handleKeyDownEvent);
+        };
+    }, []);
 
     return (
         <div

@@ -81,7 +81,7 @@ export default function LayoutPage({layouts, setLayouts, sounds}) {
                 </section>
                 <br />
                 <input className="dropdown" name="title" placeholder="Name your layout!" onChange={handleChange} required />
-                <button type="submit">{saveMessage ? saveMessage : 'SAVE LAYOUT'}</button>
+                <button style={{ textDecoration: 'underline' }} type="submit">{saveMessage ? saveMessage : 'Save Layout'}</button>
             </form>
         </main>
     )

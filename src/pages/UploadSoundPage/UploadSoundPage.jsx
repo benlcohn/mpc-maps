@@ -71,7 +71,7 @@ export default function UploadSoundPage() {
         }
       });
       return {
-        title: '',
+        title: fileName,
         category: defaultCategory,
         file,
       };
