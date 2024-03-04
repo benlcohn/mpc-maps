@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import * as userService from '../../utilities/users-service';
 
 export default function NavBar({ user, setUser }) {
+  const location = useLocation();
+
   function handleLogOut() {
     userService.logOut();
     setUser(null);
@@ -9,13 +11,13 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <nav>
-      <Link to="/drumkit">DRUMKIT</Link>
+      <Link to="/drumkit" className={location.pathname === '/drumkit' ? 'active-link' : 'inactive-link'}>DRUMKIT</Link>
       &nbsp; | &nbsp;
-      <Link to="/library">SOUND LIBRARY</Link>
+      <Link to="/library" className={location.pathname === '/library' ? 'active-link' : 'inactive-link'}>SOUND LIBRARY</Link>
       &nbsp; | &nbsp;
-      <Link to="/layouts">LAYOUTS</Link>
+      <Link to="/layouts" className={location.pathname === '/layouts' ? 'active-link' : 'inactive-link'}>LAYOUTS</Link>
       &nbsp; | &nbsp;
-      <Link to="/upload">UPLOAD AUDIO</Link>
+      <Link to="/upload" className={location.pathname === '/upload' ? 'active-link' : 'inactive-link'}>UPLOAD AUDIO</Link>
       &nbsp; | &nbsp;
       <Link to="" onClick={handleLogOut}>Log Out</Link>
     </nav>

@@ -4,8 +4,8 @@
 	--tan-2: #E1CB94;
 	--tan-3: #71645E;
 	--tan-4: #B9AA85;
-	--clrpurple: #ac00f663;
-	--purple: #ac00f6;
+	--clrpurple: #3890C3;
+	--purple: #D46731;
 	--text-light: #746874;
 	--text-dark: #16121B;
   }
@@ -100,6 +100,18 @@
 	color: var(--text-dark);
   }
   
+  nav {
+	display: flex;
+	justify-content: center; 
+	border-bottom: 2px solid var(--tan-3);
+	padding-bottom: 7px;
+  }
+
+  nav a {
+  padding: 0.2rem;
+  font-size: 0.8rem;
+}
+
   form {
 	display: grid;
 	grid-template-columns: 1fr 3fr;
@@ -203,3 +215,24 @@
 	color: #fff;
 	font-size: 3rem;
 }
+
+.active-link {
+	background-color: var(--tan-2);
+	color: var(--text-dark);
+	border: 1px solid var(--tan-4);
+	border-radius: 0.2rem;
+	text-decoration: none;
+  }
+
+.inactive-link {
+	background-color: var(--tan-1);
+	color: var(--text-dark);
+	border: 1px solid var(--tan-4);
+	border-radius: 0.2rem;
+	text-decoration: none;
+  }
+  
+  .inactive-link:hover {
+	background-color: var(--tan-3);
+  }
+  

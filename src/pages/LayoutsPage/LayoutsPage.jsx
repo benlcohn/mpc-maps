@@ -64,7 +64,7 @@ export default function LayoutPage({layouts, setLayouts, sounds}) {
     options.unshift(<option key='x'>-pick sound-</option>)
     const selects = PAD_LETTERS.map((letter, idx) => (
         <div key={letter}>
-            <span className="pad-letter">{letter}</span> {/* Display PAD_LETTER */}
+            <span className="pad-letter">{letter}</span>
             <select value={newLayout[`pad${letter}`]} onChange={handleChange} name={`pad${letter}`}>
                 {options}
             </select>
@@ -73,15 +73,14 @@ export default function LayoutPage({layouts, setLayouts, sounds}) {
 
     return (
         <main className="LayoutsPage">
-            <h1>KIT LAYOUTS</h1>
             <hr />
-            <form onSubmit={handleSubmit}>
+            <form className="layout-form" onSubmit={handleSubmit}>
                 <section>
                     {pads}
                 </section>
                 <br />
-                <input className="dropdown" name="title" placeholder="Name your layout!" onChange={handleChange} required />
-                <button style={{ textDecoration: 'underline' }} type="submit">{saveMessage ? saveMessage : 'Save Layout'}</button>
+                <input className="layout-name" name="title" placeholder="Name your layout!" onChange={handleChange} required />
+                <button className="layout-submit" style={{ textDecoration: 'underline' }} type="submit">{saveMessage ? saveMessage : 'Save Layout'}</button>
             </form>
         </main>
     )

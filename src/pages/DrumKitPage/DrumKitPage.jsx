@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './DrumKitPage.css';
-import DrumKit from '../../components/DrumKit/DrumKit';
+import DrumPad from '../../components/DrumPad/DrumPad';
 import ControlPanel from '../../components/ControlPanel/ControlPanel';
 import * as layoutsAPI from '../../utilities/layouts-api';
 import * as soundsAPI from '../../utilities/sounds-api';
@@ -18,6 +18,7 @@ const PAD_LETTERS = [
 export default function DrumKitPage() {
     const [sounds, setSounds] = useState([]);
     const [layouts, setLayouts] = useState([]);
+    const [playing, setPlaying] = useState(false);
     const [selectedLayout, setSelectedLayout] = useState('65e54e003d8518c2b9d4753e');
     const [masterVolume, setMasterVolume] = useState(0.5);
     const [pitch, setPitch] = useState(1);
@@ -25,12 +26,12 @@ export default function DrumKitPage() {
     // Fetch existing uploaded sounds after first render
     useEffect(() => {
         soundsAPI.getAll().then(sounds => setSounds(sounds));
-    }, []);
+    }, [])
 
     // Fetch existing layouts after first render
     useEffect(() => {
         layoutsAPI.getAll().then(layouts => setLayouts(layouts));
-    }, []);
+    }, [])
 
 
     // Function to handle layout selection
@@ -43,18 +44,49 @@ export default function DrumKitPage() {
     // Function to handle master volume
     const handleMasterVolumeChange = (volume) => {
         setMasterVolume(volume);
-    };
+    }
 
     // Function to handle pitch
     const handlePitchChange = (pitch) => {
         setPitch(pitch);
-    };
+    }
+
+    function play(sound) {
+        if (!sound) return;
+        setPlaying(true);
+        const audio = new Audio(sound.url);
+        audio.volume = masterVolume;
+        audio.playbackRate = pitch;
+        audio.play();
+
+        setTimeout(() => {
+            setPlaying(false);
+        }, 150);
+    }
+	
+    function handleKeyDown(evt) {
+        const letter = evt.key.toUpperCase();
+        play(selectedLayout[`pad${letter}`]);
+
+        // const soundIdx = padLetters.indexOf(evt.key.toUpperCase());
+        // if (soundIdx !== -1) {
+			// play(sounds[soundIdx]);
+			// } else {
+				//     console.log("Key not mapped to any sound.");
+				// }
+	}
+	
+    useEffect(() => {
+        window.addEventListener('keydown', handleKeyDown);
+        
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [handleKeyDown, selectedLayout])
 
 
     return (
         <div className="DrumKitPage">
-            <h1>Drumkit</h1>
-            <ControlPanel onVolumeChange={handleMasterVolumeChange} onPitchChange={handlePitchChange} />
             <div className="layout-dropdown">
                 <label htmlFor="layout-select">Select Layout:</label>
                 <select id="layout-select" onChange={handleLayoutChange}>
@@ -66,17 +98,15 @@ export default function DrumKitPage() {
                     ))}
                 </select>
             </div>
+            <ControlPanel onVolumeChange={handleMasterVolumeChange} onPitchChange={handlePitchChange} />
              <div className="drumkit">
                 {selectedLayout && PAD_LETTERS.map((letter, i) => (
-                    <DrumKit
-                        key={i}
+                    <DrumPad
                         sound={selectedLayout[`pad${letter}`]}
                         letter={letter}
                         noSound={!selectedLayout[`pad${letter}`]}
-                        padLetters={PAD_LETTERS}
-                        sounds={sounds}
-                        masterVolume={masterVolume}
-                        pitch={pitch}
+                        play={play}
+                        playing={playing}
                     />
                 ))}
             </div>

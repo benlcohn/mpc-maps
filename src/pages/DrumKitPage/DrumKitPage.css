@@ -5,13 +5,10 @@
     padding-top: 10px;
   }
   
-  .drumkit {
-    margin-top: 40px;
-  }
 
   .layout-dropdown {
     display: flex;
     align-items: center;
     width: 80vw; 
-    margin: 0 auto; 
+    margin: 20px 0 20px 0;
 }

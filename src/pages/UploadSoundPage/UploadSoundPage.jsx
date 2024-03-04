@@ -81,7 +81,7 @@ export default function UploadSoundPage() {
 
   return (
     <main className="UploadSoundPage">
-      <section className="uploadContainer">
+      <section className="upload-container">
         <input type="file" ref={fileInputRef} multiple onChange={handleFileChange} />
         <button className="uploadButton" onClick={handleUpload}>{uploadMessage ? uploadMessage : 'SAVE AUDIO'}</button>
       </section>
