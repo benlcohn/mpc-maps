@@ -10,6 +10,7 @@
 .pad:active:not(.no-sound),
 .pad.playing:not(.no-sound) {
     transform: scale(.95);
+
 }
 
 .pad .letter {

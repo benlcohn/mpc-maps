@@ -1,37 +1,12 @@
 import './DrumKit.css';
 import { useState, useEffect } from 'react';
 
-export default function DrumKit({ sound, letter, noSound, sounds, padLetters, masterVolume, pitch, selectedCategory }) {
-    const [playing, setPlaying] = useState(true);
-    const [useCategoryStyle, setUseCategoryStyle] = useState(false); // State to track whether to use category style
+export default function DrumKit({ sound, letter, noSound, sounds, padLetters, masterVolume, pitch }) {
+    const [playing, setPlaying] = useState(false);
 
-    // Function to get category color
-    function getCategoryColor(category) {
-        // Define category colors
-        const categoryColors = {
-            'Boom': 'blue',
-            'Clap': 'green',
-            'HiHat-Open': 'yellow',
-            'HiHat-Closed': 'orange',
-            // Add colors for other categories here
-        };
-
-        // Return color based on category
-        return categoryColors[category] || "purple";
-    }
-
-    // Function to determine style based on state
-    function getDisplayStyle() {
-        if (useCategoryStyle && selectedCategory) {
-            return {
-                backgroundColor: getCategoryColor(selectedCategory),
-            };
-        } else {
-            return {
-                backgroundColor: noSound ? "pink" : "purple",
-            };
-        }
-    }
+    const padStyle = {
+        backgroundColor: noSound ? "pink" : "purple",
+    };
 
     // Function to play sound
     function play(sound) {
@@ -65,7 +40,7 @@ export default function DrumKit({ sound, letter, noSound, sounds, padLetters, ma
     return (
         <div
             className={`pad ${playing ? "playing" : ""}`}
-            style={getDisplayStyle()} // Use the appropriate style based on the state
+            style={padStyle}
             onClick={() => play(sound)}
         >
             {letter}

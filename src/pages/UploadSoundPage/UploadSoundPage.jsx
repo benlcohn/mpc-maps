@@ -40,7 +40,7 @@ export default function UploadSoundPage() {
       setUploadMessage('Files uploaded successfully!'); 
     } catch (error) {
       console.error('Upload failed:', error);
-      setUploadMessage('File upload failed. Please try again.'); // Set error message
+      setUploadMessage('File upload failed. Please try again.');
     }
   }  
 
@@ -62,7 +62,7 @@ export default function UploadSoundPage() {
       return;
     }
     const newFilesInfo = Array.from(files).map((file) => {
-      const fileName = file.name.slice(0, -4); 
+      const fileName = '';
       let defaultCategory = 'Boom';
       const keywords = ['Clap', 'HiHat', 'Kick', 'Ride', 'Snare', 'Tink', 'Tom'];
       keywords.forEach(keyword => {

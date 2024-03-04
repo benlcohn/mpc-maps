@@ -1,0 +1,14 @@
+.control-panel {
+    display: flex;
+    align-items: center;
+  }
+  
+  .control-panel > * {
+    margin-right: 20px; 
+  }
+  
+
+  .slider {
+    scale: 90%;
+  }
+  
