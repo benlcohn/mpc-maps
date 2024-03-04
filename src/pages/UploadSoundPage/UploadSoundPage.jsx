@@ -95,7 +95,6 @@ const handleFileChange = (event) => {
         <button className="uploadButton" onClick={handleUpload}>Upload Sound</button>
       </section>
       <section className="fileContainer">
-        {/* Generate input fields for titles and categories based on the fileInfo state */}
         {fileInfo.map((file, index) => (
           <div key={index} className="fileDiv">
             <input 

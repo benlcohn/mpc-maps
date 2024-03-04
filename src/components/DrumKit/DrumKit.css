@@ -1,0 +1,17 @@
+.pad.no-sound {
+    background-color: lightgrey;
+    cursor: default; 
+}
+
+.pad:hover:not(.no-sound) {
+    opacity: 0.7; 
+}
+
+.pad:active:not(.no-sound),
+.pad.playing:not(.no-sound) {
+    transform: scale(.95);
+}
+
+.pad .letter {
+    color: #fff;
+}
