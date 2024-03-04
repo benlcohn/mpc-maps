@@ -27,4 +27,6 @@
     color: var(--text-light);
   }
   
-  
+  .LibraryListSound .play:hover{
+    cursor: pointer;
+  }

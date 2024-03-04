@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './LibraryListSound.css';
-import * as soundsAPI from '../../utilities/sounds-api'
 
 
 export default function LibraryListSound({ librarySound }) {

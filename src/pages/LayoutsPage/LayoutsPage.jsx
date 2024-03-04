@@ -31,11 +31,26 @@ export default function LayoutPage({layouts, setLayouts, sounds}) {
         padV: null,
     });
 
+    const [saveMessage, setSaveMessage] = useState("");
+
     async function handleSubmit(evt) {
         evt.preventDefault();
-        
+
+        const existingLayout = layouts.find(layout => layout.title === newLayout.title);
+        if (existingLayout) {
+            setSaveMessage("Title is already in use, try again!");
+            setTimeout(() => {
+                setSaveMessage(null);
+            }, 2000);
+            return;
+        }
+
         const layout = await layoutsAPI.create(newLayout);
         setLayouts([layout, ...layouts]);
+        setSaveMessage("Layout saved!");
+        setTimeout(() => {
+            setSaveMessage(null);
+        }, 2000);
     }
 
     function handleChange(evt) {
@@ -59,11 +74,6 @@ export default function LayoutPage({layouts, setLayouts, sounds}) {
     return (
         <main className="LayoutsPage">
             <h1>KIT LAYOUTS</h1>
-            {layouts.length ? 
-                <p>Layouts exist</p>
-                :
-                <h3>No existing layouts</h3>
-            }
             <hr />
             <form onSubmit={handleSubmit}>
                 <section>
@@ -71,7 +81,7 @@ export default function LayoutPage({layouts, setLayouts, sounds}) {
                 </section>
                 <br />
                 <input className="dropdown" name="title" placeholder="Name your layout!" onChange={handleChange} required />
-                <button type="submit">SAVE LAYOUT</button>
+                <button type="submit">{saveMessage ? saveMessage : 'SAVE LAYOUT'}</button>
             </form>
         </main>
     )

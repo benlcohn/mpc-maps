@@ -42,7 +42,7 @@ async function upload(req, res) {
         // Create a new Sound document for each file
         const soundDoc = await Sound.create({
           url: soundURL,
-          title: req.body.title, // Use the same title for all files, modify if needed
+          title: req.body.title,
           category: category,
           user: req.user._id
         });

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import './DrumKitPage.css';
 import DrumKit from '../../components/DrumKit/DrumKit';
-import * as layoutsAPI from '../../utilities/layouts-api'; // Import layouts API
-import * as soundsAPI from '../../utilities/sounds-api'; // Sound API
+import * as layoutsAPI from '../../utilities/layouts-api';
+import * as soundsAPI from '../../utilities/sounds-api';
 
 const PAD_LETTERS = [
     '1', '2', '3', '4',
@@ -13,9 +13,8 @@ const PAD_LETTERS = [
 
 export default function DrumKitPage() {
     const [sounds, setSounds] = useState([]);
-    const [layouts, setLayouts] = useState([]); // State for layouts
-    const [selectedLayout, setSelectedLayout] = useState(null); // State for selected layout
-
+    const [layouts, setLayouts] = useState([]);
+    const [selectedLayout, setSelectedLayout] = useState(null);
     // Fetch existing uploaded sounds after first render
     useEffect(() => {
         soundsAPI.getAll().then(sounds => setSounds(sounds));
@@ -35,14 +34,14 @@ export default function DrumKitPage() {
     }
 
 	// Define a default layout object with all pads set to non-null sound
-	const defaultLayout = {
-		_id: 'default', // Add an identifier for the default layout
-		title: 'Default Layout', // Title for default layout
-		...PAD_LETTERS.reduce((acc, letter) => {
-			acc[`pad${letter}`] = sounds[0]; // Set all pads to the first sound in the sounds array
-			return acc;
-		}, {})
-	};
+    const defaultLayout = {
+        _id: 'default', // Add an identifier for the default layout
+        title: 'Default Layout', // Title for default layout
+        ...PAD_LETTERS.reduce((acc, letter) => {
+            acc[`pad${letter}`] = null; // Set all pads to null (no sound)
+            return acc;
+        }, {})
+    };
 
 	// Set the default layout as the initial selected layout
 	useEffect(() => {
