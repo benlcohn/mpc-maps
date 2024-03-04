@@ -1,25 +1,21 @@
-.LayoutsPage {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 .LayoutsPage form section {
     display: grid;
     gap: 0.3rem;
     grid-template-columns: repeat(4, auto);
+    grid-auto-rows: 8rem; 
 }
 
 .LayoutsPage form section div {
     background-color: var(--purple);
     color: darkgrey;
-	border-radius: .5rem;
-	width: 8rem;
-	height: 8rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    border-radius: .5rem;
+    width: 8rem;
+    height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative; 
 }
 
 .LayoutsPage form section div.no-sound {
@@ -29,18 +25,20 @@
 .LayoutsPage form section div select {
     background-color: var(--clrpurple);
     width: 6rem;
-    
+    margin-top: 0.5rem;
 }
 
 .pad-letter {
-    display: block; /* Ensure it takes up the whole line */
-    margin-bottom: 90px; /* Shift it upwards */
-    background-color: var(--gray); /* Set background color */
-    border-radius: 50%; /* Make it round */
-    width: 20px; /* Set width */
-    height: 20px; /* Set height */
-    text-align: center; /* Center text */
-    line-height: 20px; /* Center vertically */
-    font-size: 14px; /* Adjust font size */
-    color: white; /* Set text color */
+    margin-bottom: 0.5rem;
+    background-color: var(--gray);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 14px;
+    color: white;
+    position: absolute; 
+    top: 0; 
+    right: 0; /* Align to the right */
 }

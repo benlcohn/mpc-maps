@@ -11,8 +11,12 @@ export default function CategoryList({ categories, activeCat, setActiveCat }) {
     </li>
   );
   return (
-    <ul className="CategoryList">
-      {cats}
-    </ul>
+    <>
+      <h3 className="AsideCat">Sounds</h3>
+      <ul className="CategoryList">
+        {cats}
+      </ul>
+      <h3 className="AsideCat">Layouts</h3>
+    </>
   );
 }

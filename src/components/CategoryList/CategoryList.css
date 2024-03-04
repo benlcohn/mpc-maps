@@ -28,3 +28,7 @@
     background-color: var(--tan-1);
     border: .1vmin solid var(--tan-3);
 }
+
+.AsideCat {
+    margin: 0px;
+}

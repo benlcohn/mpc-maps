@@ -12,6 +12,9 @@ const PAD_LETTERS = [
     'Z', 'X', 'C', 'V'
 ];
 
+//SELECT LAYOUT MAKE A BLANK SPOT IF YOU JUMP BACK TO IT AFTER SELECTING ANOTHER LAYOUT
+
+
 export default function DrumKitPage() {
     const [sounds, setSounds] = useState([]);
     const [layouts, setLayouts] = useState([]);
@@ -31,8 +34,8 @@ export default function DrumKitPage() {
 
 
     // Function to handle layout selection
-    function handleLayoutChange(event) {
-        const layoutId = event.target.value;
+    function handleLayoutChange(evt) {
+        const layoutId = evt.target.value;
         const selectedLayout = layouts.find(layout => layout._id === layoutId);
         setSelectedLayout(selectedLayout);
     }
