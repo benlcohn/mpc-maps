@@ -14,33 +14,40 @@ export default function UploadSoundPage() {
 
       if (fileInputRef.current.files.length === 0) {
         setUploadMessage('No files selected');
+        setTimeout(() => setUploadMessage(''), 2000);
         return;
       }
   
       for (let i = 0; i < fileInputRef.current.files.length; i++) {
         const file = fileInputRef.current.files[i];
-        const { title, category } = fileInfo[i];
-  
+        let { title, category } = fileInfo[i];
+
+        if (!title) {
+          title = `${file.name.charAt(0).toUpperCase()}${file.name.slice(1, -4)}`;
+        }
+
         const formData = new FormData();
         formData.append('title', title);
         formData.append('category', category);
         formData.append('sound', file);
-  
+
         formDataArray.push(formData);
       }
   
       const promises = formDataArray.map(formData =>
-        soundsAPI.upload(formData)
+        soundsAPI.uploadSound(formData)
       );
       await Promise.all(promises);
   
       setFileInfo([]); 
       fileInputRef.current.value = ''; 
 
-      setUploadMessage('Files uploaded successfully!'); 
+      setUploadMessage('Files uploaded successfully!');
+      setTimeout(() => setUploadMessage(''), 2000); 
     } catch (error) {
       console.error('Upload failed:', error);
       setUploadMessage('File upload failed. Please try again.');
+      setTimeout(() => setUploadMessage(''), 2000);
     }
   }  
 
@@ -62,22 +69,22 @@ export default function UploadSoundPage() {
       return;
     }
     const newFilesInfo = Array.from(files).map((file) => {
-      const fileName = '';
       let defaultCategory = 'Boom';
       const keywords = ['Clap', 'HiHat', 'Kick', 'Ride', 'Snare', 'Tink', 'Tom'];
+      const fileName = file.name;
       keywords.forEach(keyword => {
         if (fileName.toLowerCase().includes(keyword.toLowerCase())) {
           defaultCategory = keyword;
         }
       });
       return {
-        title: fileName,
+        title: '',
         category: defaultCategory,
         file,
       };
     });
     setFileInfo([...fileInfo, ...newFilesInfo]);
-  };
+  }
 
   return (
     <main className="UploadSoundPage">

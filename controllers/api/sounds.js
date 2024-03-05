@@ -5,7 +5,8 @@ const Category = require('../../models/category')
 module.exports = {
     upload,
     index,
-    show
+    show,
+    remove
 };
 
 async function index(req, res) {
@@ -42,5 +43,19 @@ async function upload(req, res) {
         }
     } catch (err) {
         res.status(400).json(err.message);
+    }
+}
+
+async function remove(req, res) {
+    try {
+        const sound = await Sound.findByIdAndDelete(req.params.id);
+
+        if (!sound) {
+            return res.status(404).json({ error: 'Sound not found' });
+        }
+
+        res.json({ message: 'Sound successfully deleted', sound: sound });
+    } catch (err) {
+        res.status(400).json({ error: err.message });
     }
 }

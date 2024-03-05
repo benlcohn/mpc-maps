@@ -11,6 +11,7 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <nav>
+      <img className="nav-logo" src="/logo512.png" alt="logo512" style={{width: '10%'}} />
       <Link to="/drumkit" className={location.pathname === '/drumkit' ? 'active-link' : 'inactive-link'}>DRUMKIT</Link>
       &nbsp; | &nbsp;
       <Link to="/library" className={location.pathname === '/library' ? 'active-link' : 'inactive-link'}>SOUND LIBRARY</Link>

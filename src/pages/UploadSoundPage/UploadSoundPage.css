@@ -1,38 +1,42 @@
 .upload-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 30px;
-    margin-bottom: 20px;
-  }
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  margin-left: calc(20% - 5vw);
+  margin-right: auto;
+}
+
+.fileContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-left: calc(20% - 5vw);
+  margin-right: auto;
+}
   
-  .fileContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-  
-  .fileDiv {
-    display: flex;
-    align-items: center; 
-    gap: 10px;
-  }
-  
-  /* Style for file name */
-  .fileName {
-    flex: 1;
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-    white-space: nowrap; 
-  }
-  
-  .titleInput {
-    flex: 2;
-    width: 200px;
-  }
-  
-  .categorySelect {
-    flex: 1; 
-    width: 150px; 
-  }
+.fileDiv {
+  display: flex;
+  align-items: center; 
+  gap: 10px;
+}
+
+
+.fileName {
+  flex: 1;
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
+}
+
+.titleInput {
+  flex: 2;
+  width: 200px;
+}
+
+.categorySelect {
+  flex: 1; 
+  width: 150px; 
+}

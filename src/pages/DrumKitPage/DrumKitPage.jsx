@@ -12,9 +12,6 @@ const PAD_LETTERS = [
     'Z', 'X', 'C', 'V'
 ];
 
-//SELECT LAYOUT MAKE A BLANK SPOT IF YOU JUMP BACK TO IT AFTER SELECTING ANOTHER LAYOUT
-
-
 export default function DrumKitPage() {
     const [sounds, setSounds] = useState([]);
     const [layouts, setLayouts] = useState([]);
@@ -22,39 +19,49 @@ export default function DrumKitPage() {
     const [selectedLayout, setSelectedLayout] = useState('65e54e003d8518c2b9d4753e');
     const [masterVolume, setMasterVolume] = useState(0.5);
     const [pitch, setPitch] = useState(1);
+    const [preloadedSounds, setPreloadedSounds] = useState({}); // State to store preloaded sounds
 
-    // Fetch existing uploaded sounds after first render
     useEffect(() => {
         soundsAPI.getAll().then(sounds => setSounds(sounds));
-    }, [])
+    }, []);
 
-    // Fetch existing layouts after first render
     useEffect(() => {
         layoutsAPI.getAll().then(layouts => setLayouts(layouts));
-    }, [])
+    }, []);
 
+    useEffect(() => {
+        const newPreloadedSounds = {};
+        PAD_LETTERS.forEach(letter => {
+            const sound = selectedLayout[`pad${letter}`];
+            if (sound) {
+                const audio = new Audio(sound.url);
+                audio.load(); // Preload the sound
+                newPreloadedSounds[`pad${letter}`] = audio;
+            }
+        });
+        setPreloadedSounds(newPreloadedSounds);
+    }, [selectedLayout]);
 
-    // Function to handle layout selection
     function handleLayoutChange(evt) {
         const layoutId = evt.target.value;
         const selectedLayout = layouts.find(layout => layout._id === layoutId);
         setSelectedLayout(selectedLayout);
     }
 
-    // Function to handle master volume
     const handleMasterVolumeChange = (volume) => {
         setMasterVolume(volume);
-    }
+    };
 
-    // Function to handle pitch
     const handlePitchChange = (pitch) => {
         setPitch(pitch);
-    }
+    };
 
-    function play(sound) {
-        if (!sound) return;
+    function play(soundKey) {
+        const audio = preloadedSounds[soundKey];
+        if (!audio) return;
+
         setPlaying(true);
-        const audio = new Audio(sound.url);
+        audio.currentTime = 0; // Rewind to the start
         audio.volume = masterVolume;
         audio.playbackRate = pitch;
         audio.play();
@@ -63,27 +70,20 @@ export default function DrumKitPage() {
             setPlaying(false);
         }, 150);
     }
-	
+
     function handleKeyDown(evt) {
         const letter = evt.key.toUpperCase();
-        play(selectedLayout[`pad${letter}`]);
+        const soundKey = `pad${letter}`;
+        play(soundKey);
+    }
 
-        // const soundIdx = padLetters.indexOf(evt.key.toUpperCase());
-        // if (soundIdx !== -1) {
-			// play(sounds[soundIdx]);
-			// } else {
-				//     console.log("Key not mapped to any sound.");
-				// }
-	}
-	
     useEffect(() => {
         window.addEventListener('keydown', handleKeyDown);
-        
+
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
         };
-    }, [handleKeyDown, selectedLayout])
-
+    }, [handleKeyDown, selectedLayout, preloadedSounds]);
 
     return (
         <div className="DrumKitPage">
@@ -99,13 +99,14 @@ export default function DrumKitPage() {
                 </select>
             </div>
             <ControlPanel onVolumeChange={handleMasterVolumeChange} onPitchChange={handlePitchChange} />
-             <div className="drumkit">
+            <div className="drumkit">
                 {selectedLayout && PAD_LETTERS.map((letter, i) => (
                     <DrumPad
+                        key={i}
                         sound={selectedLayout[`pad${letter}`]}
                         letter={letter}
                         noSound={!selectedLayout[`pad${letter}`]}
-                        play={play}
+                        play={() => play(`pad${letter}`)}
                         playing={playing}
                     />
                 ))}

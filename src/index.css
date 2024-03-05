@@ -101,16 +101,45 @@
   }
   
   nav {
+	padding-top: 0.5rem;
 	display: flex;
+	align-items: center;
 	justify-content: center; 
 	border-bottom: 2px solid var(--tan-3);
-	padding-bottom: 7px;
   }
 
   nav a {
-  padding: 0.2rem;
-  font-size: 0.8rem;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+	max-height: 1.5rem;
+    overflow: hidden;
 }
+
+
+  nav .nav-logo {
+	padding-right: .7rem;
+  }
+
+  .active-link {
+	background-color: var(--tan-2);
+	color: var(--text-dark);
+	border: 1px solid var(--tan-4);
+	border-radius: 0.2rem;
+	text-decoration: none;
+  }
+
+.inactive-link {
+	background-color: var(--tan-1);
+	color: var(--text-dark);
+	border: 1px solid var(--tan-4);
+	border-radius: 0.2rem;
+	text-decoration: none;
+  }
+  
+  .inactive-link:hover {
+	background-color: var(--tan-3);
+  }
+  
 
   form {
 	display: grid;
@@ -216,23 +245,3 @@
 	font-size: 3rem;
 }
 
-.active-link {
-	background-color: var(--tan-2);
-	color: var(--text-dark);
-	border: 1px solid var(--tan-4);
-	border-radius: 0.2rem;
-	text-decoration: none;
-  }
-
-.inactive-link {
-	background-color: var(--tan-1);
-	color: var(--text-dark);
-	border: 1px solid var(--tan-4);
-	border-radius: 0.2rem;
-	text-decoration: none;
-  }
-  
-  .inactive-link:hover {
-	background-color: var(--tan-3);
-  }
-  

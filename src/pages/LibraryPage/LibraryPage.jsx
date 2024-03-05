@@ -1,8 +1,6 @@
 import './LibraryPage.css';
-import Logo from '../../components/Logo/Logo';
 import { useState, useEffect, useRef } from 'react'
 import * as soundsAPI from '../../utilities/sounds-api'
-import * as layoutsAPI from '../../utilities/layouts-api'
 import LibraryList from '../../components/LibraryList/LibraryList';
 import CategoryList from '../../components/CategoryList/CategoryList';
 
