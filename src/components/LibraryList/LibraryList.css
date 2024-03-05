@@ -4,5 +4,7 @@
   border-radius: 2vmin;
   margin: 3vmin 0;
   padding: 3vmin;
-  overflow-y: scroll;
+  overflow-y: auto;
+  max-width: 100%; 
+  max-height: 80vh;
 }

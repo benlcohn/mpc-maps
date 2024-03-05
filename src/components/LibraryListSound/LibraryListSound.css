@@ -1,5 +1,6 @@
 .LibraryListSound {
   width: 100%;
+  max-height: 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,14 +15,19 @@
 
 .LibraryListSound .play span:first-child {
   color: var(--white);
-  font-size: 6vmin;
+  background-color: var(--blue);
+  font-size: 3vmin;
+  font-weight: bold;
+  padding-left: .1vmin;
+  padding-right: .1vmin;
+  border-radius: 8px;
 }
 
 .LibraryListSound .play span:last-child {
-  background-color: var(--purple);
+  background-color: var(--borange);
   color: var(--white);
-  border-radius: 10px;
-  font-size: 6vmin;
+  border-radius: 8px;
+  font-size: 3vmin;
 }
 
 .LibraryListSound .title {

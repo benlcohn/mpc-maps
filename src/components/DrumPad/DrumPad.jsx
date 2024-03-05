@@ -4,7 +4,7 @@ export default function DrumPad({ sound, letter, noSound, play, playing }) {
 
 
     const padStyle = {
-        backgroundColor: noSound ? "pink" : "purple",
+        backgroundColor: noSound ? "var(--blue)" : "var(--borange)",
     }
 
     return (

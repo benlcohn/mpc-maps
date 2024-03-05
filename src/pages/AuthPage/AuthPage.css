@@ -10,6 +10,5 @@
   }
 
 .auth-container {
-    max-width: 100%;
     flex-grow: 1;
 }

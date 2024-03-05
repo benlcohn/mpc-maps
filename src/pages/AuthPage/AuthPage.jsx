@@ -8,7 +8,7 @@ export default function AuthPage({ setUser }) {
 
   return (
     <main className="AuthPage">
-      <img src="/logo512.png" alt="logo512" style={{width: '40%'}} />
+      <img src="/logo512.png" alt="logo512" style={{width: '35%'}} />
         <div className="auth-container">
           {showLogin ? <LoginForm setUser={setUser} /> : <SignUpForm setUser={setUser} />}
         </div>

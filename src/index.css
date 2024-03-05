@@ -4,8 +4,8 @@
 	--tan-2: #E1CB94;
 	--tan-3: #71645E;
 	--tan-4: #B9AA85;
-	--clrpurple: #3890C3;
-	--purple: #D46731;
+	--blue: #3890C3;
+	--borange: #D46731;
 	--text-light: #746874;
 	--text-dark: #16121B;
   }
@@ -87,7 +87,7 @@
   }
   
   span.error-message {
-	color: var(--purple);
+	color: var(--borange);
 	text-align: center;
 	display: block;
   }
@@ -165,14 +165,14 @@
   }
   
   input:focus {
-	border-color: var(--purple);
+	border-color: var(--borange);
   }
   
   button, a.button {
 	margin: 1vmin;
 	padding: 1vmin;
 	color: var(--white);
-	background-color: var(--purple);
+	background-color: var(--borange);
 	font-size: 2vmin;
 	font-weight: bold;
 	text-decoration: none;
@@ -244,4 +244,3 @@
 	color: #fff;
 	font-size: 3rem;
 }
-

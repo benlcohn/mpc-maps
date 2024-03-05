@@ -19,7 +19,7 @@
 }
 
 .LayoutsPage form section div.no-sound {
-    background-color: var(--clrpurple);
+    background-color: var(--blue);
 }
 
 .LayoutsPage form section div select {
@@ -28,9 +28,11 @@
     margin-top: 0.5rem;
 }
 
+
 .layout-form {
     width: 70%;
     max-width: 600px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
