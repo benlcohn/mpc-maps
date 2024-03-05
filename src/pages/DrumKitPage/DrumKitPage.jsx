@@ -15,11 +15,11 @@ const PAD_LETTERS = [
 export default function DrumKitPage() {
     const [sounds, setSounds] = useState([]);
     const [layouts, setLayouts] = useState([]);
-    const [playing, setPlaying] = useState(false);
     const [selectedLayout, setSelectedLayout] = useState('65e54e003d8518c2b9d4753e');
     const [masterVolume, setMasterVolume] = useState(0.5);
     const [pitch, setPitch] = useState(1);
-    const [preloadedSounds, setPreloadedSounds] = useState({}); // State to store preloaded sounds
+    const [preloadedSounds, setPreloadedSounds] = useState({});
+    const [activePad, setActivePad] = useState(null);
 
     useEffect(() => {
         soundsAPI.getAll().then(sounds => setSounds(sounds));
@@ -35,7 +35,7 @@ export default function DrumKitPage() {
             const sound = selectedLayout[`pad${letter}`];
             if (sound) {
                 const audio = new Audio(sound.url);
-                audio.load(); // Preload the sound
+                audio.load();
                 newPreloadedSounds[`pad${letter}`] = audio;
             }
         });
@@ -56,25 +56,22 @@ export default function DrumKitPage() {
         setPitch(pitch);
     };
 
-    function play(soundKey) {
+    function play(soundKey, letter) {
         const audio = preloadedSounds[soundKey];
         if (!audio) return;
 
-        setPlaying(true);
-        audio.currentTime = 0; // Rewind to the start
+        setActivePad(letter);
+        audio.currentTime = 0;
         audio.volume = masterVolume;
         audio.playbackRate = pitch;
         audio.play();
 
-        setTimeout(() => {
-            setPlaying(false);
-        }, 150);
+        setTimeout(() => setActivePad(null), 150);
     }
 
     function handleKeyDown(evt) {
         const letter = evt.key.toUpperCase();
-        const soundKey = `pad${letter}`;
-        play(soundKey);
+        play(`pad${letter}`, letter);
     }
 
     useEffect(() => {
@@ -88,7 +85,8 @@ export default function DrumKitPage() {
     return (
         <div className="DrumKitPage">
             <div className="layout-dropdown">
-                <label htmlFor="layout-select">Select Layout:</label>
+                <label>Select Layout:</label>
+                &nbsp;
                 <select id="layout-select" onChange={handleLayoutChange}>
                     <option value="">Select Layout</option>
                     {layouts.map(layout => (
@@ -99,18 +97,19 @@ export default function DrumKitPage() {
                 </select>
             </div>
             <ControlPanel onVolumeChange={handleMasterVolumeChange} onPitchChange={handlePitchChange} />
-            <div className="drumkit">
-                {selectedLayout && PAD_LETTERS.map((letter, i) => (
-                    <DrumPad
-                        key={i}
-                        sound={selectedLayout[`pad${letter}`]}
-                        letter={letter}
-                        noSound={!selectedLayout[`pad${letter}`]}
-                        play={() => play(`pad${letter}`)}
-                        playing={playing}
-                    />
-                ))}
+                <div className="drumkit">
+                    {selectedLayout && PAD_LETTERS.map((letter, i) => (
+                        <DrumPad
+                            key={i}
+                            sound={selectedLayout[`pad${letter}`]}
+                            letter={letter}
+                            noSound={!selectedLayout[`pad${letter}`]}
+                            play={play}
+                            activePad={activePad}
+                        />
+                    ))}
+                </div>
+
             </div>
-        </div>
     );
 }

@@ -14,19 +14,19 @@
 }
 
 .LibraryListSound .play span:first-child {
-  color: var(--white);
+  color: var(--tan-1);
   background-color: var(--blue);
   font-size: 3vmin;
   font-weight: bold;
   padding-left: .1vmin;
   padding-right: .1vmin;
-  border-radius: 8px;
+  border-radius: 3px;
 }
 
 .LibraryListSound .play span:last-child {
   background-color: var(--borange);
-  color: var(--white);
-  border-radius: 8px;
+  color: var(--tan-1);
+  border-radius: 3px;
   font-size: 3vmin;
 }
 

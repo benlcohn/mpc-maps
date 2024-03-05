@@ -12,3 +12,13 @@
     align-items: center;
     margin: 3vmin 2vmin;
 }
+
+.about-library {
+  display: grid;
+  color: var(--text-light);
+  padding-left: 2vmin;
+  font-size: 2.5vw;
+  text-align: center;
+  place-items: center;
+  opacity: .6;
+}

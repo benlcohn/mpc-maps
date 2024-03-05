@@ -33,7 +33,10 @@ export default function LibraryPage({ user, setUser }) {
             <LibraryList
             librarySounds={librarySounds.filter(sound => sound.category.name === activeCat)}
             />
-            <div className="Placeholder" />
+            <h4 className="about-library">This page contains a collection of privately-shared sound samples.
+                <br></br><br></br>Currently anyone can play or delete all sound files available,
+                so please a careful with the goods!
+            </h4>
         </main>
     );
 }

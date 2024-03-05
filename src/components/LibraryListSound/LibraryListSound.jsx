@@ -17,7 +17,8 @@ export default function LibraryListSound({ librarySound, onDelete }) {
       <div className="LibraryListSound">
         <div className="title">{librarySound.title}</div>
         <div className="play">
-          <span onClick={removeSound}>X</span>
+          <span onClick={removeSound}>X</span> 
+          &nbsp;
           <span onClick={play}>▶️</span>
         </div>
       </div>

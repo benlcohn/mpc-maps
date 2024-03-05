@@ -16,7 +16,7 @@ export default function CategoryList({ categories, activeCat, setActiveCat }) {
       <ul className="CategoryList">
         {cats}
       </ul>
-      <h3 className="AsideCat">Layouts</h3>
+      {/* <h3 className="AsideCat">Layouts</h3> */}
     </>
   );
 }
