@@ -1,0 +1,48 @@
+.home-page {
+	width: 100vw;
+	height: 100vh;
+}
+
+h1 {
+    font-size: 48px;
+    padding-bottom: 0px;
+}
+
+.page-container {
+	position: relative;
+}
+  
+.background-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url('../../../public/MPC60skin.png');
+	background-size: cover;
+	background-position: center;
+	opacity: 0.4;
+	z-index: -1;
+}
+  
+.content-container {
+    position: relative;
+    z-index: 1;
+    transform: translate(5vh, 5vh); 
+    
+}
+
+/* Pulled straight from chatGPT */
+.home-copy {
+    white-space: pre-wrap;
+    font-size: 24px;
+    width: 95vw; /* Keeps .home-copy width less than the full viewport width */
+    max-width: calc(100% - 10vh); /* Ensures .home-copy is always narrower than the .background-container, accounting for the translation of the .content-container */
+    min-width: 800px; /* Ensures .home-copy does not become narrower than 800px */
+    column-count: 2; /* Splits the content into two columns */
+    column-gap: 40px; /* Sets the gap between the columns */
+    -webkit-column-count: 2; /* For Safari and older Chrome browsers */
+    -webkit-column-gap: 40px; /* For Safari and older Chrome browsers */
+    -moz-column-count: 2; /* For Firefox browsers */
+    -moz-column-gap: 40px; /* For Firefox browsers */
+}

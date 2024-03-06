@@ -112,6 +112,8 @@ export default function UploadSoundPage() {
               <option value='Tom-High'>Tom-High</option>
               <option value='Tom-Low'>Tom-Low</option>
               <option value='Tom-Mid'>Tom-Mid</option>
+              <option value='808'>808</option>
+              <option value='Soft Pad'>Soft Pad</option>
             </select>
           </div>
         ))}

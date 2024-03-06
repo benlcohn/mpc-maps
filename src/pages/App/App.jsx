@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import { getUser } from '../../utilities/users-service';
 import AuthPage from '../AuthPage/AuthPage';
+import HomePage from '../HomePage/HomePage';
 import DrumKitPage from '../DrumKitPage/DrumKitPage';
 import LibraryPage from '../LibraryPage/LibraryPage';
 import LayoutsPage from '../LayoutsPage/LayoutsPage';
@@ -31,6 +32,7 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
           <Routes>
             {/* client-side route that renders the component instance if the path matches the url in the address bar */}
+            <Route path="/" element={<HomePage />} />
             <Route path="/drumkit" element={<DrumKitPage layouts={layouts} />} />
             <Route path="/upload" element={<UploadSoundPage />} />
             <Route path="/library" element={<LibraryPage />} />

@@ -1,70 +1,49 @@
+.layout-form {
+    padding-top: 5vmin;
+    margin: 0 auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
 .LayoutsPage form section {
     display: grid;
     gap: 0.3rem;
     grid-template-columns: repeat(4, auto);
-    grid-auto-rows: 8rem; 
+    grid-auto-rows: 9.6rem;
+    justify-content: center; 
 }
+
 
 .LayoutsPage form section div {
     background-color: var(--tan-4);
     color: darkgrey;
     border-radius: .5rem;
-    width: 8rem;
-    height: 8rem;
+    width: 9.6rem; 
+    height: 9.6rem;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    position: relative; 
-}
-
-.LayoutsPage form section div.no-sound {
-    background-color: var(--blue);
+    position: relative;
 }
 
 .LayoutsPage form section div select {
     background-color: var(--gray);
-    width: 6rem;
+    width: 7.2rem; 
     margin-top: 0.5rem;
-}
-
-
-.layout-form {
-    width: 70%;
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.layout-submit,
-.layout-name {
-    width: 70%;
-}
-
-@media (max-width: 800px) {
-    .layout-form {
-        width: 100%; 
-    }
 }
 
 .pad-letter {
     margin-bottom: 0.5rem;
     background-color: var(--gray);
     border-radius: 50%;
-    width: 3vw;
-    height: 3vw;
+    width: 3.6vw;
+    height: 3.6vw; 
     text-align: center;
-    line-height: 3vw;
-    font-size: 2vw;
+    line-height: 3.6vw; 
     color: white;
     position: absolute;
     top: 0;
     right: 0;
-}
-
-
-.layout-form {
-    scale: 90%;
 }
