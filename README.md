@@ -110,3 +110,5 @@ NOTE FOR EDIT: Client-side latency solution
 - [ ] Allow users to edit and make layouts shareable
 
 - [ ] Added features to the drumkit including: custom pad colors, sound hotswap, and pitch control per-pad
+
+- [ ] Long-term, adding a trim and togglevs trigger feature for playback
