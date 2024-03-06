@@ -1,17 +1,11 @@
 <div id="header" align="center">
 
-  <img src="./public/MPC60skin.png" width="800" height="400">
+  <img src="./public/MPC-MAPS-BANNER-WIDE-ALT.png" width="800" height="400">
 
 </div>
 <div id="description" align="center">
-# MPC MAPS
 
-🟦 🟥 🟥 🟥
-🟥 🟥 🟦 🟥
-🟦 🟥 🟥 🟥
-🟥 🟥 🟥 🟦
-
-Deployed demo is located here: [DEMO](https://mpc-maps-f12fcab484eb.herokuapp.com/)
+Shortcut To [DEMO](https://mpc-maps-f12fcab484eb.herokuapp.com/)
 
 ##### Benjamin Cohn
 
@@ -32,6 +26,8 @@ Explore our Private Layouts Collection, a feature that pays homage to the MPC's 
 Leverage our streamlined Upload Feature, a nod to the MPC's sampling prowess, allowing you to effortlessly move sound samples to our database. Whether it's field recordings, synthesized sounds, or vintage vinyl chops, our platform simplifies the process, enabling you to expand your sonic palette with ease.
 
 Our platform embodies the innovation and versatility of Akai MPCs, reimagined for today's digital landscape. Whether you're a seasoned beat-maker or new to the world of music production, join us in celebrating the legacy of MPCs while pushing the boundaries of what's possible in sound creation.
+
+NOTE FOR EDIT: Client-side latency solution
 
 </div>
 
