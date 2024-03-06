@@ -19,7 +19,14 @@ const Sound = require('./models/sound');
       // {name: 'Tom-Low', sortOrder: 100},
       // {name: 'Tom-Mid', sortOrder: 110},
       // {name: '808', sortOrder: 120},
-      {name: 'Softpad', sortOrder: 130},
+      // {name: 'Softpad', sortOrder: 130},
+      // {name: 'FX', sortOrder: 140},
+      // {name: 'Keys', sortOrder: 150},
+      // {name: 'Horn', sortOrder: 160},
+      // {name: 'Cymbals', sortOrder: 170},
+      // {name: 'Percs', sortOrder: 180},
+      // {name: 'Snaps', sortOrder: 190},
+      // {name: 'Keys', sortOrder: 200},
 
     ]);
 

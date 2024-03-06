@@ -18,14 +18,14 @@
 
 .CategoryList li:hover:not(.active) {
     cursor: pointer;
-    background-color: var(--borange);
     color: var(--white);
+    background-color: var(--borange);
 
 }
 
 .CategoryList li.active {
     color: var(--text-dark);
-    background-color: var(--tan-1);
+    background-color: var(--tan-4);
     border: .1vmin solid var(--tan-3);
 }
 

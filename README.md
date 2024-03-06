@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+<div id="header" align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  <img src="./public/MPC60skin.png" width="800" height="400">
 
-## Available Scripts
+</div>
+<div id="description" align="center">
+# MPC MAPS
 
-In the project directory, you can run:
+🟦 🟥 🟥 🟥
+🟥 🟥 🟦 🟥
+🟦 🟥 🟥 🟥
+🟥 🟥 🟥 🟦
 
-### `npm start`
+Deployed demo is located here: [DEMO](https://mpc-maps-f12fcab484eb.herokuapp.com/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+##### Benjamin Cohn
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  [![LinkedIn Badge](https://img.shields.io/badge/-@benjaminlcohn-blue?style=flat&logo=Linkedin&logoColor=black)](https://www.linkedin.com/in/benjaminlcohn/)
 
-### `npm test`
+## :pencil: Description
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Introducing the ultimate digital destination for all MPC enthusiasts and sound creators: your one-stop virtual MPC workshop. Inspired by the legendary Akai MPC, renowned for revolutionizing music production with its integrated sampler and sequencer, our platform brings the essence of MPC's tactile beat-making experience into the digital realm.
 
-### `npm run build`
+Dive into our expansive Sound Library, where you'll find an eclectic array of samples ready to infuse your tracks with the signature warmth and grit that MPCs are celebrated for. From vintage drum sounds to contemporary sonic textures, our meticulously curated collection is designed to cater to every genre and production style.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+With our intuitive Drumkit Builder, you can channel the MPC's spirit by crafting custom drum kits tailored to your unique sound. Select from our diverse sound map, and assign samples to your virtual pads, creating personalized kits that resonate with your musical identity.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Explore our Private Layouts Collection, a feature that pays homage to the MPC's layout flexibility, enabling producers to configure their workflow according to their preferences. Access a library of custom templates or create your own, optimizing your beat-making process for efficiency and creativity.
 
-### `npm run eject`
+Leverage our streamlined Upload Feature, a nod to the MPC's sampling prowess, allowing you to effortlessly move sound samples to our database. Whether it's field recordings, synthesized sounds, or vintage vinyl chops, our platform simplifies the process, enabling you to expand your sonic palette with ease.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Our platform embodies the innovation and versatility of Akai MPCs, reimagined for today's digital landscape. Whether you're a seasoned beat-maker or new to the world of music production, join us in celebrating the legacy of MPCs while pushing the boundaries of what's possible in sound creation.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+</div>
+# Screenshots
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<summary> :gear: Functionality</summary>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| Description | Screenshot |
+|------------ | ------------|
+| <h3 align="center">"The Drumkit" Page</h3> | <img src="./public/MPC-MAPS-KIT.png"> width="700"/> |
+| <h3 align="center">"Add Albums" Page</h3> | <img src="<img src="./public/MPC-MAPS-LIB.png">" width="700"/> |
+| <h3 align="center">"Details" Page (1)</h3> | <img src="https://i.imgur.com/6mS1QZm.png" width="700"/> |
+| <h3 align="center">"Details" Page (2)</h3> | <img src="https://i.imgur.com/GsTLlMu.png" width="700"/> |
+</details>
 
-### Code Splitting
+[Trello](https://trello.com/b/xjUlvP6I/mpc-maps)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Technologies Used
 
-### Analyzing the Bundle Size
+  ## :computer: Technologies Used
+  A screenshot of your app's landing page and any other screenshots of interest.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+  ![MongoDB](https://img.shields.io/badge/-MongoDB-05122A?style=flat&logo=mongodb)
+  ![Express](https://img.shields.io/badge/-Express-05122A?style=flat&logo=express)
+  ![React](https://img.shields.io/badge/-React-05122A?style=flat&logo=react)
+  ![Node](https://img.shields.io/badge/-Node.js-05122A?style=flat&logo=node.js)
+  ![AWS S3](https://img.shields.io/badge/-AWS_S3-05122A?style=flat&logo=amazons3)
+  ![JavaScript](https://img.shields.io/badge/-JavaScript-05122A?style=flat&logo=javascript)
+  ![HTML5](https://img.shields.io/badge/-HTML5-05122A?style=flat&logo=html5)
+  ![CSS3](https://img.shields.io/badge/-CSS-05122A?style=flat&logo=css3)
+  ![Trello](https://img.shields.io/badge/-Trello-05122A?style=flat&logo=trello)
+  ![Heroku](https://img.shields.io/badge/-Heroku-05122A?style=flat&logo=heroku)
+  ![Canva](https://img.shields.io/badge/-Canva-05122A?style=flat&logo=canva)
+  ![Git](https://img.shields.io/badge/-Git-05122A?style=flat&logo=git)
+  ![Github](https://img.shields.io/badge/-GitHub-05122A?style=flat&logo=github)
+  ![VSCode](https://img.shields.io/badge/-VS_Code-05122A?style=flat&logo=visualstudio)
+  ![Python](https://img.shields.io/badge/-Python-05122A?style=flat&logo=python)
+  ![Django](https://img.shields.io/badge/-Django-05122A?style=flat&logo=django)
+  
 
-### Making a Progressive Web App
+# Getting Started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+[Click to open webpage!](https://traveljournal1204-759d2dd9fb50.herokuapp.com/)
 
-### Advanced Configuration
+## :satellite: Upcoming Features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- [:star:] Animations on sliding buttons
 
-### Deployment
+- [:x:] Comment functionality on posts to encourage discussion
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [:x:] ~~Tinder API Integration~~

@@ -29,12 +29,24 @@ const port = process.env.PORT || 3001;
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/sounds', require('./routes/api/sounds'));
 app.use('/api/layouts', require('./routes/api/layouts'));
+app.use('/api/categories', require('./routes/api/categories'));
 
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX/API requests
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+app.get('/api/categories', async (req, res) => {
+  try {
+      const categories = await Category.find({}).sort('sortOrder');
+      console.log(categories); // Log to see the actual data being sent
+      res.json(categories);
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal server error' });
+  }
 });
 
 app.listen(port, function() {

@@ -1,12 +1,23 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import './UploadSoundPage.css';
 import * as soundsAPI from '../../utilities/sounds-api';
+import * as categoriesAPI from '../../utilities/categories-api';
 
 export default function UploadSoundPage() {
   const [fileInfo, setFileInfo] = useState([]);
   const [uploadMessage, setUploadMessage] = useState("");
+  const [categories, setCategories] = useState([]);
 
   const fileInputRef = useRef();
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+        const categories = await categoriesAPI.getAll();
+        setCategories(categories);
+    };
+    fetchCategories();
+  }, [])
+  
 
   const handleUpload = async () => {
     try {
@@ -63,23 +74,26 @@ export default function UploadSoundPage() {
     setFileInfo(updatedFileInfo);
   }
 
-  const handleFileChange = (event) => {
-    const files = event.target.files;
+  const handleFileChange = (evt) => {
+    const files = evt.target.files;
     if (files.length === 0) {
       return;
     }
+
+    const keywords = categories.map(category => category.name);
+
     const newFilesInfo = Array.from(files).map((file) => {
       let defaultCategory = 'Boom';
-      const keywords = ['Clap', 'HiHat', 'Kick', 'Ride', 'Snare', 'Tink', 'Tom'];
-      const fileName = file.name;
-      keywords.forEach(keyword => {
-        if (fileName.toLowerCase().includes(keyword.toLowerCase())) {
-          defaultCategory = keyword;
-        }
-      });
+      const fileName = file.name.toLowerCase();
+  
+      const foundCategory = keywords.find(keyword => fileName.includes(keyword.toLowerCase()));
+  
+
+      const defaultTitle = `${file.name.charAt(0).toUpperCase()}${file.name.slice(1, -4)}`;
+
       return {
-        title: '',
-        category: defaultCategory,
+        title: defaultTitle,
+        category: foundCategory || defaultCategory,
         file,
       };
     });
@@ -99,21 +113,11 @@ export default function UploadSoundPage() {
               className="titleInput" 
               value={file.title} 
               onChange={(evt) => handleTitleChange(index, evt.target.value)} 
-              placeholder={`Rename '${fileInputRef.current.files[index].name.charAt(0).toUpperCase()}${fileInputRef.current.files[index].name.slice(1, -4)}'`} />
+            />
             <select className="categorySelect" value={file.category} onChange={(evt) => handleCategoryChange(index, evt.target.value)}> 
-              <option value='Boom'>Boom</option>
-              <option value='Clap'>Clap</option>
-              <option value='HiHat-Open'>HiHat-Open</option>
-              <option value='HiHat-Closed'>HiHat-Closed</option>
-              <option value='Kick'>Kick</option>
-              <option value='Ride'>Ride</option>
-              <option value='Snare'>Snare</option>
-              <option value='Tink'>Tink</option>
-              <option value='Tom-High'>Tom-High</option>
-              <option value='Tom-Low'>Tom-Low</option>
-              <option value='Tom-Mid'>Tom-Mid</option>
-              <option value='808'>808</option>
-              <option value='Soft Pad'>Soft Pad</option>
+              {categories && categories.map((category) => (
+                <option key={category._id} value={category.name}>{category.name}</option>
+              ))}
             </select>
           </div>
         ))}

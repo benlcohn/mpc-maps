@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import * as layoutsAPI from '../../utilities/layouts-api';
 import * as soundsAPI from '../../utilities/sounds-api'
 
+// ADD FUNCTIONALITY TO PULL UP AND EDIT EXISTING LAYOUTS
+
 const PAD_LETTERS = [
 	'1', '2', '3', '4', 
 	'Q', 'W', 'E', 'R', 
