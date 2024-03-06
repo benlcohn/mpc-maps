@@ -19,6 +19,7 @@ Deployed demo is located here: [DEMO](https://mpc-maps-f12fcab484eb.herokuapp.co
 
 ## :pencil: Description
 
+
 Introducing the ultimate digital destination for all MPC enthusiasts and sound creators: your one-stop virtual MPC workshop. Inspired by the legendary Akai MPC, renowned for revolutionizing music production with its integrated sampler and sequencer, our platform brings the essence of MPC's tactile beat-making experience into the digital realm.
 
 Dive into our expansive Sound Library, where you'll find an eclectic array of samples ready to infuse your tracks with the signature warmth and grit that MPCs are celebrated for. From vintage drum sounds to contemporary sonic textures, our meticulously curated collection is designed to cater to every genre and production style.
@@ -33,7 +34,6 @@ Leverage our streamlined Upload Feature, a nod to the MPC's sampling prowess, al
 Our platform embodies the innovation and versatility of Akai MPCs, reimagined for today's digital landscape. Whether you're a seasoned beat-maker or new to the world of music production, join us in celebrating the legacy of MPCs while pushing the boundaries of what's possible in sound creation.
 
 </div>
-# Screenshots
 
 
 
@@ -48,7 +48,7 @@ Our platform embodies the innovation and versatility of Akai MPCs, reimagined fo
 
 
 ## :computer: Technologies Used
-A screenshot of your app's landing page and any other screenshots of interest.
+
 
 ![MongoDB](https://img.shields.io/badge/-MongoDB-05122A?style=flat&logo=mongodb)
 ![Express](https://img.shields.io/badge/-Express-05122A?style=flat&logo=express)
