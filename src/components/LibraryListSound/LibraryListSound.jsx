@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './LibraryListSound.css';
 
 export default function LibraryListSound({ librarySound, onDelete }) {
-    const [playing, setPlaying] = useState(false);
+    const [setPlaying] = useState(false);
   
     async function removeSound() {
       onDelete(librarySound._id); 

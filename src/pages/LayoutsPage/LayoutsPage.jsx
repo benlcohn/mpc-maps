@@ -1,7 +1,6 @@
 import './LayoutsPage.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import * as layoutsAPI from '../../utilities/layouts-api';
-import * as soundsAPI from '../../utilities/sounds-api'
 
 // ADD FUNCTIONALITY TO PULL UP AND EDIT EXISTING LAYOUTS
 

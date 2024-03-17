@@ -37,7 +37,7 @@ export default function App() {
             <Route path="/upload" element={<UploadSoundPage />} />
             <Route path="/library" element={<LibraryPage />} />
             <Route path="/layouts" element={<LayoutsPage sounds={sounds} layouts={layouts} setLayouts={setLayouts} />} />
-            {/* redirect to /orders/new if path in address bar hasn't matched a <Route> above */}
+            {/* redirect to / if path in address bar hasn't matched a <Route> above */}
         </Routes>
 
         </>
